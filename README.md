@@ -10,7 +10,7 @@ This is an application example of SIMATIC AX to showcase the communication betwe
 - PLCSIM Advanced V6.0 (PLC FW V3.1)
 - UaExpert
 
-## Installation
+## Project Installation
 
 - **1st:** Open a command line interface (CLI) and switch to the target folder. E.G, if the target folder is C:/Users/user/Desktop
 
@@ -92,7 +92,7 @@ This documentation provides guidance on installing, using, and configuring UaExp
 
 UAExpert is an OPC UA client designed to demonstrate the OPC UA technology. It serves as a versatile test client supporting various OPC UA features, making it an essential tool for developers and testers evaluating OPC UA technology. Further details: [UAExpert website](https://www.unified-automation.com/products/development-tools/uaexpert.html).
 
-## Installation
+## UAExpert Installation
 
 ### Download
 
