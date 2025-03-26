@@ -1,0 +1,3 @@
+tank.rVolume_Current
+tank.inputValve.cOpenPercent
+tank.outputValve.cOpenPercent
