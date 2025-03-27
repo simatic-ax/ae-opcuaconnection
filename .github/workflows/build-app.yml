@@ -2,7 +2,7 @@ on: push
 
 jobs:
   test-apax-app:
-    uses: simatic-ax/actions/.github/workflows/apax-build.yml@stable
+    uses: simatic-ax/actions/.github/workflows/apax-build-test.yml@stable
     secrets:
       APAX_TOKEN: ${{ secrets.APAX_TOKEN }}
       SIMATIC_AX_TOKEN: ${{ secrets.DEPLOY_KEY }}
