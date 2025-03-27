@@ -1,5 +1,5 @@
 # General information
-name: "watertank_ax"
+name: "water-tank"
 version: 0.0.1
 author: Siemens AG
 type: app
@@ -8,7 +8,7 @@ description: <OPC UA Server Configuration example for a tank simulation>
 #URL to the repository
 repository:
   type: git
-  url: https://github.com/simatic-ax/watertank_ax
+  url: https://github.com/simatic-ax/ae-opcuaconnection
 # Targets to be compiled with 'apax build'
 targets:
   - "1500"
