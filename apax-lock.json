@@ -7,7 +7,7 @@
     "name": "water-tank",
     "version": "0.0.1",
     "dependencies": {
-      "@ax/simatic-1500-clocks": "^8.0.8",
+      "@ax/simatic-1500-clocks": "^9.0.0",
       "@ax/opcua-server-config": "^2.0.0",
       "@ax/mon": "^1.6.5"
     },
@@ -56,9 +56,9 @@
     },
     "@ax/simatic-1500-clocks": {
       "name": "@ax/simatic-1500-clocks",
-      "version": "8.0.8",
-      "integrity": "sha512-97hevBrfhlDppBYv0uaATE/Yv1/YPZh6Bc3U3DxLDVHdFPqWQy7R6VQmiqBtjfw8YBjrxYsCVnABJ/Lu0GVciw==",
-      "resolved": "https://registry.simatic-ax.siemens.io/@ax/simatic-1500-clocks/-/simatic-1500-clocks-8.0.8.tgz",
+      "version": "9.0.1",
+      "integrity": "sha512-ROWnF62TlpLfGGpxOEAvFt7bas8ZwOZ3gk3tSbV/HlDGa8eaViG8ifrOijpVH70nUOUlToyVVCiYOt52ApdTLQ==",
+      "resolved": "https://registry.simatic-ax.siemens.io/@ax/simatic-1500-clocks/-/simatic-1500-clocks-9.0.1.tgz",
       "dependencies": {}
     },
     "@ax/opcua-server-config": {
