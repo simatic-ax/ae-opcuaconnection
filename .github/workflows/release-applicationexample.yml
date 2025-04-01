@@ -13,4 +13,4 @@ jobs:
 
     with:
       VERSION: ${{ github.ref_name }}
-      PROJECT_NAME: water-tank
+      PROJECT_NAME: ae-opcuaconnection
