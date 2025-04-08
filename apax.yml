@@ -82,3 +82,8 @@ scripts:
     - apax mod --targetIP $IP_ADDRESS  --certificate ./certificate/certificateForConnection.crt --username MyUser --password Siemens1! --symbol "tank.outputValve.cOpenPercent" --value 20
   stopEmpty:
     - apax mod --targetIP $IP_ADDRESS  --certificate ./certificate/certificateForConnection.crt --username MyUser --password Siemens1! --symbol "tank.outputValve.cOpenPercent" --value 0
+
+# Monitor from server side
+
+  monitor:
+    - apax mon --targetIP $IP_ADDRESS --certificate ./certificate/certificateForConnection.crt --username MyUser --password Siemens1! --file ./watchlist/myWatchTable.mon --continuously
