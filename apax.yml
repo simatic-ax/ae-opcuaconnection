@@ -62,7 +62,7 @@ scripts:
   create-opcua-interface:
     - apax build
     - mkdir -p ./.gen/opcua
-    - apax oscr export --input ./bin/1500/watertank_ax.app --output ./.gen/opcua/water-tank.xml
+    - apax oscr export --input ./bin/1500/water-tank.app --output ./.gen/opcua/water-tank.xml
 
   # Compile and load software
   scl:
