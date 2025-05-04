@@ -22,8 +22,8 @@ installStrategy: overridable
 apaxVersion: 3.2.4
 # Dependencies
 dependencies:
-  "@ax/simatic-1500-clocks": ^8.0.8
-  "@ax/opcua-server-config": ^2.0.0
+  "@ax/simatic-1500-clocks": ^10.0.0
+  "@ax/opcua-server-config": ^3.0.0
   "@ax/mon": ^1.6.5
 devDependencies:
   "@ax/sdk": 2411.2.0
