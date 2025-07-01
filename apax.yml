@@ -18,17 +18,15 @@ targets:
 registries:
   '@simatic-ax': 'https://npm.pkg.github.com/'
 # Install settings
-installStrategy: overridable
-apaxVersion: 3.2.4
+installStrategy: strict
+apaxVersion: 4.0.0
 # Dependencies
 dependencies:
-  "@ax/simatic-1500-clocks": ^8.0.8
-  "@ax/opcua-server-config": ^2.0.0
-  "@ax/mon": ^1.6.5
+  "@ax/simatic-1500-clocks": ^10.0.6
+  "@ax/opcua-server-config": ^3.0.0
+  "@ax/mon": ^1.7.6
 devDependencies:
-  "@ax/sdk": 2411.2.0
-  "@simatic-ax/snippetscollection": 1.0.0
-
+  "@ax/sdk": 2504.0.0
 # Project variables
 variables:
   APAX_BUILD_ARGS:
@@ -36,10 +34,11 @@ variables:
   BIN_FOLDER: "./bin/1500" # input folder for the loader in the load script. For PLCSIM Advanced it has to be changed to "./bin/plcsim"
   # IP address of the target device, you want to download your application code to
   # Note: For value debugging/monitoring, the IP address in the .vscode/launch.json must also be adapted
-  IP_ADDRESS: "10.12.27.13"
+  IP_ADDRESS: "192.168.0.1"
   PLC_NAME: "TankPlc"
-  HWL_FILE: "hwconfiguration/tankPlc.hwl.json"
+  HWL_FILE: "hwconfiguration/tankPlc.hwl.yml"
 
+  CERT_PASSWORD: "!S71500"
   MASTER_PASSWORD: "VeryGoodPassword123++"
   USERNAME: "MyUser"
   PASSWORD: "Siemens1!"
@@ -48,21 +47,21 @@ variables:
 scripts:
   # call 'apax load' to download the built program to the specified target
   # The variables IP_ADDRESS and BIN_FOLDER above might have to be adapted
-  load: apax sld load --target $IP_ADDRESS --restart --accept-security-disclaimer --log debug --certificate ./certificate/certificateForConnection.crt
+  load: apax sld load --target $IP_ADDRESS --restart --accept-security-disclaimer --log debug --certificate ./certificate/reference_x509.crt
   hwcompile: apax hwc compile --input $HWL_FILE  --output "bin/hwcn"
-  hwdownload: apax hwld --input "./bin/hwcn/$PLC_NAME" --targetIP $IP_ADDRESS --masterPassword:"VeryGoodPassword123++" --accept-security-disclaimer
+  hwdownload: apax hwld load --input "./bin/hwcn/$PLC_NAME" --target $IP_ADDRESS --master-password $MASTER_PASSWORD --accept-security-disclaimer
 
+  create_certificate:
+  - chmod +x certificate/createCertificateViaOpenSSL.sh
+  - certificate/createCertificateViaOpenSSL.sh $CERT_PASSWORD
+  - echo "Make sure that the CERT_PASSPHRASE variable retains the value that was last used to generate the certificate files when you import certificates later."
+  
   setup-hw-certificates:
-    - apax hwc setup-secure-communication --name $PLC_NAME --input $HWL_FILE --password $MASTER_PASSWORD
-    - apax hwc import-certificate --name $PLC_NAME --input $HWL_FILE --certificate "./certificate/pkcs12ForCertificateImport.p12" --password "Siemens1!" --purpose "TLS"
-    - apax hwc import-certificate --name $PLC_NAME --input $HWL_FILE --certificate "./certificate/pkcs12ForCertificateImport.p12" --password "Siemens1!" --purpose "OpcUaServer"
+    - apax hwc setup-secure-communication --module-name $PLC_NAME --input $HWL_FILE --master-password $MASTER_PASSWORD
+    - apax hwc import-certificate --module-name $PLC_NAME --input $HWL_FILE --certificate "./certificate/containerWithPublicAndPrivateKeys_x509.p12" --passphrase $CERT_PASSWORD --purpose "TLS"
+    - apax hwc import-certificate --module-name $PLC_NAME --input $HWL_FILE --certificate "./certificate/containerWithPublicAndPrivateKeys_x509.p12" --passphrase $CERT_PASSWORD --purpose "OpcUaServer"
 
-  set-password: apax hwc manage-users --input $HWL_FILE --moduleName $PLC_NAME set-password --userName $USERNAME --password  $PASSWORD
-
-  create-opcua-interface:
-    - apax build
-    - mkdir -p ./.gen/opcua
-    - apax oscr export --input ./bin/1500/water-tank.app --output ./.gen/opcua/water-tank.xml
+  set-password: apax hwc manage-users --module-name $PLC_NAME --input $HWL_FILE  set-password --username $USERNAME --password  $PASSWORD
 
   # Compile and load software
   scl:
@@ -75,15 +74,15 @@ scripts:
     - apax hwdownload
 
   fill:
-    - apax mod --targetIP $IP_ADDRESS  --certificate ./certificate/certificateForConnection.crt --username MyUser --password Siemens1! --symbol "tank.inputValve.cOpenPercent" --value 10
+    - apax mod --targetIP $IP_ADDRESS  --certificate ./certificate/reference_x509.crt --username MyUser --password Siemens1! --symbol "tank.inputValve.cOpenPercent" --value 10
   stopFill:
-    - apax mod --targetIP $IP_ADDRESS  --certificate ./certificate/certificateForConnection.crt --username MyUser --password Siemens1! --symbol "tank.inputValve.cOpenPercent" --value 0
+    - apax mod --targetIP $IP_ADDRESS  --certificate ./certificate/reference_x509.crt --username MyUser --password Siemens1! --symbol "tank.inputValve.cOpenPercent" --value 0
   empty:
-    - apax mod --targetIP $IP_ADDRESS  --certificate ./certificate/certificateForConnection.crt --username MyUser --password Siemens1! --symbol "tank.outputValve.cOpenPercent" --value 20
+    - apax mod --targetIP $IP_ADDRESS  --certificate ./certificate/reference_x509.crt --username MyUser --password Siemens1! --symbol "tank.outputValve.cOpenPercent" --value 20
   stopEmpty:
-    - apax mod --targetIP $IP_ADDRESS  --certificate ./certificate/certificateForConnection.crt --username MyUser --password Siemens1! --symbol "tank.outputValve.cOpenPercent" --value 0
+    - apax mod --targetIP $IP_ADDRESS  --certificate ./certificate/reference_x509.crt --username MyUser --password Siemens1! --symbol "tank.outputValve.cOpenPercent" --value 0
 
-# Monitor from server side
+  # Monitor from server side
 
   monitor:
-    - apax mon --targetIP $IP_ADDRESS --certificate ./certificate/certificateForConnection.crt --username MyUser --password Siemens1! --file ./watchlist/myWatchTable.mon --continuously
+    - apax mon --targetIP $IP_ADDRESS --certificate ./certificate/reference_x509.crt --username MyUser --password Siemens1! --file ./watchlist/myWatchTable.mon --continuously
