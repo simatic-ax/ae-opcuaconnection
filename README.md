@@ -49,13 +49,15 @@ The process to run the project with the opcua interface follows this process:
 
 1. Run _apax install_ to install all the project dependencies.
 
-2. Run the script _setup-hw-certificates_  that will setup the secure communication and then will import the certificate to the hardware.
+2. Run the script _create_certificate_ that will generate the certificate in .crt format and the public and private key in PKCS#12 format.
 
-3. Run the script _set-password_ to enable the password for the user configurated "MyUser".
+3. Run the script _setup-hw-certificates_  that will setup the secure communication and then will import the certificate to the hardware.
 
-4. Run the script _hcl_. Here the hardware configuration is compiled and downloaded to the plc instance.
+4. Run the script _set-password_ to enable the password for the user configurated "MyUser".
 
-5. Run the script _scl_. The application is built and transferred to the instance.
+5. Run the script _hcl_. Here the hardware configuration is compiled and downloaded to the plc instance.
+
+6. Run the script _scl_. The application is built and transferred to the instance.
 
 In addition, there are commands to control the tank from AX side:
 
