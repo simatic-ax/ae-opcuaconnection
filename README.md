@@ -36,14 +36,14 @@ This is an application example of SIMATIC AX to showcase the communication betwe
 
 3. If it does not open automatically, open a terminal: (`CTRL+ ´`)
 
-4. Start a PLCSIM Advanced Instance (we are using a FW V3.1 PLC, so please use at least PLCSIm Advanced 6.0) with the same IP address that you will use in the `apax.yml`, the `.vscode/launch.json` and the `tankPlc.hwljson` of the project. To change the IP, [follow the instructions](#prepare-configuration).
+4. Start a PLCSIM Advanced Instance (we are using a FW V3.1 PLC, so please use at least PLCSIm Advanced 6.0) with the same IP address that you will use in the `apax.yml`, the `.vscode/launch.json` and the `tankPlc.hwl.yml` of the project. To change the IP, [follow the instructions](#prepare-configuration).
 
   > :warning:
   > You need to have a PLCSIM Adv instance running. Online access must be set to **TCP/IP Single Adapter** with the same IP address and mask configured above.
 
 ## How to run this project
 
-We provide you the solution already prepared for being able to run the **OPC UA Server** with just compilling and downloading the hardware and software. The hardware certificates and user configuration were already created from our side. The hardware certificate has been generated using a third-party tool, in this case **OpenSSL**. This certificate must be an X.509 certificate containing the private keys saved as PKCS#12 certificate. These files are located under the _certificate_ folder. This process is out of the scope of this project.
+We provide you the solution already prepared for being able to run the **OPC UA Server** with just compilling and downloading the hardware and software. The hardware certificates and user configuration were already created from our side. The hardware certificate will bee generated using a third-party tool, in this case **OpenSSL**. The _create_certificate_ script will generate an X.509 certificate containing the private keys saved as PKCS#12 certificate. These files are located under the _certificate_ folder. This process is out of the scope of this project.
 
 The process to run the project with the opcua interface follows this process:
 
@@ -53,11 +53,9 @@ The process to run the project with the opcua interface follows this process:
 
 3. Run the script _set-password_ to enable the password for the user configurated "MyUser".
 
-4. Run the script _create-opcua-interface_ to create the opcua
+4. Run the script _hcl_. Here the hardware configuration is compiled and downloaded to the plc instance.
 
-5. Run the script _hcl_. Here the hardware configuration is compiled and downloaded to the plc instance.
-
-6. Run the script _scl_. The application is built and transferred to the instance.
+5. Run the script _scl_. The application is built and transferred to the instance.
 
 In addition, there are commands to control the tank from AX side:
 
@@ -72,7 +70,7 @@ Modify the IP addresses for your use case, whether if it is running in the same 
 
 Where to modify the IP Addresses in **SIMATIC AX**:
 
-- Modify the IP Address and mask at line 54 in `hwconfiguration\tankPlc.hwl.json`:
+- Modify the IP Address and mask at line 35 in `hwconfiguration\tankPlc.hwl.yml`:
 
     ![AX_IP-1](docs/graphics/AX_IP-1.jpg)
 
