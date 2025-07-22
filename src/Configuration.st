@@ -8,5 +8,10 @@ CONFIGURATION MyConfiguration
         {OpcUa.accesslevel=ReadWrite}
         {S7.extern=ReadWrite}
         tank: Tank;
+        
+        {OpcUa.accesslevel=ReadWrite}
+        {S7.Extern=ReadWrite}
+        {resource=alarming?refid:dd62150c}
+        highLevelAlarm : Siemens.Simatic.S71500.Alarming.ProgramAlarm;
     END_VAR
 END_CONFIGURATION

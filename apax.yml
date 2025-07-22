@@ -23,8 +23,8 @@ apaxVersion: 4.0.0
 # Dependencies
 dependencies:
   "@ax/simatic-1500-clocks": ^10.0.6
-  "@ax/opcua-server-config": ^3.0.0
   "@ax/mon": ^1.7.6
+  "@ax/simatic-1500-alarming": ^4.0.0
 devDependencies:
   "@ax/sdk": 2504.0.0
 # Project variables
@@ -34,7 +34,7 @@ variables:
   BIN_FOLDER: "./bin/1500" # input folder for the loader in the load script. For PLCSIM Advanced it has to be changed to "./bin/plcsim"
   # IP address of the target device, you want to download your application code to
   # Note: For value debugging/monitoring, the IP address in the .vscode/launch.json must also be adapted
-  IP_ADDRESS: "192.168.0.1"
+  IP_ADDRESS: "10.12.27.13"
   PLC_NAME: "TankPlc"
   HWL_FILE: "hwconfiguration/tankPlc.hwl.yml"
 
@@ -52,10 +52,10 @@ scripts:
   hwdownload: apax hwld load --input "./bin/hwcn/$PLC_NAME" --target $IP_ADDRESS --master-password $MASTER_PASSWORD --accept-security-disclaimer
 
   create_certificate:
-  - chmod +x certificate/createCertificateViaOpenSSL.sh
-  - certificate/createCertificateViaOpenSSL.sh $CERT_PASSWORD
-  - echo "Make sure that the CERT_PASSPHRASE variable retains the value that was last used to generate the certificate files when you import certificates later."
-  
+    - chmod +x certificate/createCertificateViaOpenSSL.sh
+    - certificate/createCertificateViaOpenSSL.sh $CERT_PASSWORD
+    - echo "Make sure that the CERT_PASSPHRASE variable retains the value that was last used to generate the certificate files when you import certificates later."
+
   setup-hw-certificates:
     - apax hwc setup-secure-communication --module-name $PLC_NAME --input $HWL_FILE --master-password $MASTER_PASSWORD
     - apax hwc import-certificate --module-name $PLC_NAME --input $HWL_FILE --certificate "./certificate/containerWithPublicAndPrivateKeys_x509.p12" --passphrase $CERT_PASSWORD --purpose "TLS"

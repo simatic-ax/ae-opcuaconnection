@@ -1,4 +1,5 @@
 USING Siemens.Simatic.S71500.Clocks;
+USING Siemens.Simatic.S71500.Alarming;
 
 CLASS Valve
     {S7.extern=ReadOnly}
@@ -41,6 +42,7 @@ END_TYPE
 PROGRAM WaterTank
     VAR_EXTERNAL
         tank: Tank;
+        highLevelAlarm : Siemens.Simatic.S71500.Alarming.ProgramAlarm;
     END_VAR
 
     VAR
@@ -111,6 +113,12 @@ PROGRAM WaterTank
     temp := tank.rVolume_Current / tank.rVolume_Max * 100;
     tank.cVolume_Percent := TO_BYTE(TO_INT(temp));
 
+    // Alarm logic for high level (>85%)
+    IF TO_INT(tank.cVolume_Percent) > 85 THEN
+        highLevelAlarm(SIG := TRUE);   // Raise alarm
+    ELSE
+        highLevelAlarm(SIG := FALSE);  // Reset/acknowledge alarm
+    END_IF;
     IF tank.rVolume_Current = 0 THEN
         tank.outputValve.isEmergencyDraining := false;
     END_IF;
