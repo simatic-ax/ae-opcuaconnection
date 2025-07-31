@@ -11,7 +11,12 @@ Devices:
             Parameters:
               SecurityPolicies:
                 - Basic256Sha256SignEncrypt
+                      # Port: 4840
+              AlarmsAndConditionsAcknowledgeActive: True
+              AlarmsAndConditionsEnable: True
+              # AlarmsAndConditionsActiveMultilingual: False
         Parameters:
+          CentralAlarmManagement: True
           # Possible values: 0 - NoLicense | 1 - SimaticOpcUaS71500Small | 2 - SimaticOpcUaS71500Medium | 3 - SimaticOpcUaS71500Large
           OpcUaPurchasedLicense: 2
         UserManagement:
