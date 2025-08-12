@@ -23,7 +23,6 @@ apaxVersion: 4.0.0
 # Dependencies
 dependencies:
   "@ax/simatic-1500-clocks": ^10.0.6
-  "@ax/mon": ^1.7.6
   "@ax/simatic-1500-alarming": ^4.0.0
 devDependencies:
   "@ax/sdk": 2504.0.0
