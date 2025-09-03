@@ -19,14 +19,14 @@ registries:
   '@simatic-ax': 'https://npm.pkg.github.com/'
 # Install settings
 installStrategy: strict
-apaxVersion: 4.0.0
+apaxVersion: 4.1.0
 # Dependencies
 dependencies:
-  "@ax/simatic-1500-clocks": ^10.0.6
-  "@ax/mon": ^1.7.6
-  "@ax/simatic-1500-alarming": ^4.0.0
+  "@ax/simatic-1500-clocks": 10.0.6
+  "@ax/mon": 1.8.8
+  "@ax/simatic-1500-alarming": 4.0.0
 devDependencies:
-  "@ax/sdk": 2504.0.0
+  "@ax/sdk": 2504.1.1
 # Project variables
 variables:
   APAX_BUILD_ARGS:
@@ -34,7 +34,7 @@ variables:
   BIN_FOLDER: "./bin/1500" # input folder for the loader in the load script. For PLCSIM Advanced it has to be changed to "./bin/plcsim"
   # IP address of the target device, you want to download your application code to
   # Note: For value debugging/monitoring, the IP address in the .vscode/launch.json must also be adapted
-  IP_ADDRESS: "10.12.27.13"
+  IP_ADDRESS: "192.168.0.1"
   PLC_NAME: "TankPlc"
   HWL_FILE: "hwconfiguration/tankPlc.hwl.yml"
 
@@ -86,3 +86,5 @@ scripts:
 
   monitor:
     - apax mon --targetIP $IP_ADDRESS --certificate ./certificate/reference_x509.crt --username MyUser --password Siemens1! --file ./watchlist/myWatchTable.mon --continuously
+catalogs:
+  "@ax/simatic-ax": ^2504.1.1
