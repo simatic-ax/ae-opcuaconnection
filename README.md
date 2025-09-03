@@ -2,7 +2,7 @@
 
 ## Description
 
-This is an application example of SIMATIC AX to showcase the communication between a PLC and Uaxpert using a protected OPC UA connection. The use-case for this example is to show how a simulated water tank is controlled using a secure OPC UA connection. The PLC and UaExpert communicate to manage the tank's water level by opening and closing valves
+This is an application example of SIMATIC AX to showcase the communication between a PLC and Uaxpert using a protected OPC UA connection. The use-case for this example is to show how a simulated water tank is controlled using a secure OPC UA connection. The PLC and UaExpert communicate to manage the tank's water level by opening and closing valves. The scenario includes the setup and consumption of OPC UA Alarms, enabling the client to receive and display alarm notifications from the server.
 
 ## Used components
 
@@ -148,6 +148,18 @@ The user has as well a log display where he can follow every event that is track
 
 ![alt text](docs/graphics/LogEvent.png)
 
+## Visualization of an Alarm in UaExpert
+To properly visualize OPC UA Alarms in UaExpert, the user must use the Event View, which is specifically designed to display alarms and events emitted by the OPC UA server. For finding it:
+
+![alt text](docs/graphics/AddDocument.png)
+
+Once the new document is added, from the dropdown list, select "Event View":
+
+![alt text](docs/graphics/EventView.png)
+
+Now, select the source that is providing the alarm. In this case, this is a program alarm. On the next image it is explained where to find it in the tree of objects. Then, drag and drop it into the Event View. In this case, the alarm has been configured in order to be enabled once the volume percentage of the tank exceeds the 85% and gets automatically removed if the volume decreases that level.
+
+![alt text](docs/graphics/Alarm.png)
 ## Contribution
 
 Thanks for your interest in contributing. Everybody is free to report bugs, unclear documentation, and other problems regarding this repository in the issues section, or even better, is free to propose any changes to this repository using Merge Requests.
