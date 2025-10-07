@@ -37,9 +37,9 @@ Devices:
             Label: X1
             Addresses:
               Configured:
-                - IPv4: 10.12.27.13/11
+                - IPv4: 192.168.0.1/11
           - Name: Interface2
             Label: X2
             Addresses:
               Configured:
-                - IPv4: 192.168.178.123/24
+                - IPv4: 10.14.178.123/24
