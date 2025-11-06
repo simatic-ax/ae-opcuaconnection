@@ -1,5 +1,5 @@
-USING Siemens.Simatic.S71500.Clocks;
-USING Siemens.Simatic.S71500.Alarming;
+USING Siemens.Simatic.Clocks;
+USING Siemens.Simatic.Alarming;
 
 CLASS Valve
     {S7.extern=ReadOnly}

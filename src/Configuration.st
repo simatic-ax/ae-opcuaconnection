@@ -12,6 +12,6 @@ CONFIGURATION MyConfiguration
         {OpcUa.accesslevel=ReadWrite}
         {S7.Extern=ReadWrite}
         {resource=alarming?refid:dd62150c}
-        highLevelAlarm : Siemens.Simatic.S71500.Alarming.ProgramAlarm;
+        highLevelAlarm : Siemens.Simatic.Alarming.ProgramAlarm;
     END_VAR
 END_CONFIGURATION
