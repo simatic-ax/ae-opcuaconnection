@@ -42,7 +42,7 @@ END_TYPE
 PROGRAM WaterTank
     VAR_EXTERNAL
         tank: Tank;
-        highLevelAlarm : Siemens.Simatic.S71500.Alarming.ProgramAlarm;
+        highLevelAlarm : Siemens.Simatic.Alarming.ProgramAlarm;
     END_VAR
 
     VAR
