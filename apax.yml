@@ -26,7 +26,7 @@ dependencies:
   "@ax/mon": 1.8.8
   "@ax/simatic-1500-alarming": 4.0.0
 devDependencies:
-  "@ax/sdk": 2504.1.1
+  "@ax/sdk": 2510.0.0
 # Project variables
 variables:
   APAX_BUILD_ARGS:
@@ -87,4 +87,4 @@ scripts:
   monitor:
     - apax mon --targetIP $IP_ADDRESS --certificate ./certificate/reference_x509.crt --username MyUser --password Siemens1! --file ./watchlist/myWatchTable.mon --continuously
 catalogs:
-  "@ax/simatic-ax": 2504.1.1
+  "@ax/simatic-ax": 2510.0.0
