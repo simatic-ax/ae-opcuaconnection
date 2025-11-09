@@ -22,8 +22,8 @@ installStrategy: strict
 apaxVersion: 4.1.0
 # Dependencies
 dependencies:
-  "@ax/simatic-1500-clocks": 10.0.6
-  "@ax/mon": 1.8.8
+  "@ax/simatic-1500-clocks": 10.0.64
+  "@ax/mon": 1.9.4
   "@ax/simatic-1500-alarming": 4.0.0
 devDependencies:
   "@ax/sdk": 2504.1.1
