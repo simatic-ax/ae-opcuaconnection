@@ -26,10 +26,10 @@ catalogs:
 # Dependencies
 dependencies:
   "@ax/simatic-clocks": ^11.0.14
-  "@ax/mon": ^1.9.4
   "@ax/simatic-alarming": ^5.0.1
 devDependencies:
   "@ax/sdk": ^2510.0.0
+  "@ax/mon": ^1.9.4
 # Project variables
 variables:
   APAX_BUILD_ARGS:
