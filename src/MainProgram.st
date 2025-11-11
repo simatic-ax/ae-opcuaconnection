@@ -1,5 +1,5 @@
-USING Siemens.Simatic.S71500.Clocks;
-USING Siemens.Simatic.S71500.Alarming;
+USING Siemens.Simatic.Clocks;
+USING Siemens.Simatic.Alarming;
 
 CLASS Valve
     {S7.extern=ReadOnly}
@@ -42,7 +42,7 @@ END_TYPE
 PROGRAM WaterTank
     VAR_EXTERNAL
         tank: Tank;
-        highLevelAlarm : Siemens.Simatic.S71500.Alarming.ProgramAlarm;
+        highLevelAlarm : Siemens.Simatic.Alarming.ProgramAlarm;
     END_VAR
 
     VAR
