@@ -1,5 +1,5 @@
 # General information
-name: "ae-opcuaconnection"
+name: "@simatic-ax/ae-opcuaconnection"
 version: 1.0.0
 author: Siemens AG
 type: app
