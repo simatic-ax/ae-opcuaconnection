@@ -1,6 +1,6 @@
 # General information
-name: "water-tank"
-version: 0.0.1
+name: "ae-opcuaconnection"
+version: 1.0.0
 author: Siemens AG
 type: app
 # Description for your application example or app
