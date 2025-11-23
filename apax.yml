@@ -22,7 +22,7 @@ apaxVersion: 4.1.0
 
 #Catalogs
 catalogs:
-  "@ax/simatic-ax": 2510.0.0
+  "@ax/simatic-ax": 2510.1.0
 # Dependencies
 dependencies:
   "@ax/simatic-clocks": ^11.0.14
